@@ -19,3 +19,17 @@ BR3 | Loopback 101 | 192.168.33.254/24 |
 BR3 | Loopback 102 | 192.168.34.254/24 |
 BR3 | Loopback103 | 3.3.3.3/32 |
 BR3 | Tunnel100 | - |
+
+## Таблица 2
+
+Устройство | Интерфейс (Сеть) | IPv6-адрес |
+ :---: | :---: | :---: |
+HQ1 | G0/0 (LAN) | 2018:218A:4021::1/64 |
+HQ1 | s0/1/0 (INET1) | - |
+HQ1 | Loopback 101 | dead:beef::1/128 |
+HQ1 | Tunnel100 | 2018::1/64 |
+BR3 | Dialer1 (INET3) | - |
+BR3 | Loopback 101 | - |
+BR3 | Loopback 102 | - |
+BR3 | Loopback 103 | dead:beef::3/128 |
+BR3 | Tunnel 100 | 2018::2/64 |
