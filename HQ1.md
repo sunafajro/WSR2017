@@ -20,7 +20,10 @@
 #(config) service password-encryption
 ```
 7. Устройство должно быть доступно для управления по протоколу SSH версии 2.
-
+```
+#(config) crypto key generate rsa
+#(config) ip ssh version 2
+```
 8. Установите правильное локальное время
 ```
 # clock set 13:32:00 23 July 2017
