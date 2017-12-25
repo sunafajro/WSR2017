@@ -12,7 +12,7 @@
 ```
 #(config) username wsr2017 privilege 15 secret cisco
 ```
-4. Для ВСЕХ устройств реализуйте модель AAA.
+4. Реализуйте модель AAA.
   - Аутентификация на удаленной консоли должна производиться с использованием локальной базы данных
   - После успешной аутентификации при входе с удаленной консоли пользователь сразу должен попадать в режим с максимальным уровнем привилегий.
   - Настройте необходимость аутентификации на локальной консоли.
@@ -34,6 +34,27 @@
 ```
 #(config) enable password wsr
 #(config) service password-encryption
+```
+6. Cоздайте виртуальные интерфейсы, подынтерфейсы и интерфейсы типа петля. Назначьте IP-адреса в соответствии с Таблицами 1 и 2.
+  - Включите механизм SLAAC для выдачи IPv6-адресов в сети LAN на интерфейсе маршрутизатора HQ1.
+```
+#(config) interface gigabitethernet 0/0
+#(config-if) id address 172.16.138.254 255.255.255.0
+#(config-if) ipv6 enable
+#(config-if) ipv6 2018:218A:4021::1/64
+#(config-if) no shutdown
+#(config) interface serial 0/1/0
+#(config-if) id address 20.18.64.2 255.255.255.24
+#(config-if) no shutdown
+#(config) interface loopback 101
+#(config-if) id address 11.11.11.11 255.255.255.255
+#(config-if) ipv6 enable
+#(config-if) ipv6 address dead:beef::1/128
+#(config-if) no shutdown
+#(config) interface Tunnel 100
+#(config-if) ipv6 enable
+#(config-if) ipv6 address 2018::1/64
+#(config-if) no shutdown
 ```
 7. Устройство должно быть доступно для управления по протоколу SSH версии 2.
 ```
